@@ -12,7 +12,7 @@ function App() {
 
   const onClickMinus = () => {
 
-    if(count == 0) {
+    if(count === 0) {
       setCount(0);
     } else {
       setCount(count-1);
@@ -24,15 +24,25 @@ function App() {
     setCount(0);
   }
 
+  const textStyle = () => {
+    if(count > 0 && count % 3 === 0) {
+      return {color: 'red'};
+    } else if(count % 3 === 1) {
+      return {color: 'green'};
+    } else if(count > 0){
+      return {color: 'blue'};
+    }
+  }
+
   return (
     <div className="App">
       <div className='container'>
         <h2 className='counter-text'> Counter </h2>
-        <h1> {count} </h1>
+        <h1 style={textStyle()} > {count} </h1>
         <button className='minus' onClick={onClickMinus}>
           -
         </button>
-        <button className='plus' onClick={onClickPlus}>
+        <button className='plus' onClick={onClickPlus} >
           +
         </button>
         <br></br>
