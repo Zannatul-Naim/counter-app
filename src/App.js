@@ -24,14 +24,25 @@ function App() {
     setCount(0);
   }
 
+const hexCodes = [0,1,2,3,4,5,6,7,8,9,"A","B","C","D","E","F"]
+
+const getCharacter = (index) => hexCodes[index];
+
+function generateJustOneColor() {
+    
+	let hexColorRep = "#";
+
+  for(let i = 0; i < 6; i++) {
+    const randomPosition = Math.floor ( Math.random() * hexCodes.length );
+    hexColorRep += getCharacter( randomPosition );
+  }
+
+	return hexColorRep
+
+}
+
   const textStyle = () => {
-    if(count > 0 && count % 3 === 0) {
-      return {color: 'red'};
-    } else if(count % 3 === 1) {
-      return {color: 'green'};
-    } else if(count > 0){
-      return {color: 'blue'};
-    }
+    if(count > 0) return { color: generateJustOneColor() };
   }
 
   return (
